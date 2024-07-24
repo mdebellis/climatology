@@ -100,7 +100,8 @@
 
 ###  http://www.semanticweb.org/mdebe/ontologies/2024/6/climatology/addressedBy
 :addressedBy rdf:type owl:ObjectProperty ;
-             owl:inverseOf :addresses .
+             owl:inverseOf :addresses ;
+             rdfs:label "addressed By" .
 
 
 ###  http://www.semanticweb.org/mdebe/ontologies/2024/6/climatology/addresses
@@ -154,9 +155,8 @@
 
 
 ###  http://www.semanticweb.org/mdebe/ontologies/2024/6/climatology/isContainedIn
-:isContainedIn rdf:type owl:ObjectProperty ;
-               rdfs:subPropertyOf owl:topObjectProperty ;
-               rdf:type owl:TransitiveProperty ;
+:isContainedIn rdf:type owl:ObjectProperty ,
+                        owl:TransitiveProperty ;
                rdfs:label "is Contained In" .
 
 
