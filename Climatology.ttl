@@ -451,6 +451,11 @@ Hartmann, Dennis L. (2015-12-02T22:58:59.000). Global Physical Climatology . Els
 Hartmann, Dennis L. (2015-12-02T22:58:59.000). Global Physical Climatology . Elsevier Science. Kindle Edition.""" .
 
 
+###  http://www.semanticweb.org/mdebe/ontologies/2024/6/climatology/Cloudiness
+:Cloudiness rdf:type owl:Class ;
+            rdfs:subClassOf :WeatherElement .
+
+
 ###  http://www.semanticweb.org/mdebe/ontologies/2024/6/climatology/Corporation
 :Corporation rdf:type owl:Class ;
              rdfs:subClassOf :Organization ;
@@ -514,6 +519,11 @@ Hartmann, Dennis L. (2015-12-02T22:58:59.000). Global Physical Climatology . Els
                rdfs:label "Precipitation" .
 
 
+###  http://www.semanticweb.org/mdebe/ontologies/2024/6/climatology/Pressure
+:Pressure rdf:type owl:Class ;
+          rdfs:subClassOf :WeatherElement .
+
+
 ###  http://www.semanticweb.org/mdebe/ontologies/2024/6/climatology/Process
 :Process rdf:type owl:Class ;
          rdfs:label "Process" .
@@ -569,6 +579,11 @@ Hartmann, Dennis L. (2015-12-02T22:58:59.000). Global Physical Climatology . Els
                 <http://www.w3.org/2004/02/skos/core#definition> """The climate of Earth is defined in terms of measurable weather elements. The weather elements of most interest are temperature and precipitation. These two factors together largely determine the species of plants and animals that survive and prosper in a particular location. Other variables are also important, of course. The humidity, the amount of water vapor in the air, is a critical climate factor that is related closely to the temperature and precipitation. Condensation of water in the atmosphere produces clouds of water droplets or ice particles that greatly change the radiative properties of the atmosphere.
 
 Hartmann, Dennis L. (2015-12-02T22:58:59.000). Global Physical Climatology . Elsevier Science. Kindle Edition.""" .
+
+
+###  http://www.semanticweb.org/mdebe/ontologies/2024/6/climatology/Wind
+:Wind rdf:type owl:Class ;
+      rdfs:subClassOf :WeatherElement .
 
 
 ###  http://www.w3.org/2004/02/skos/core#Concept
