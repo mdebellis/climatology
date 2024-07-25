@@ -645,7 +645,8 @@ Hartmann, Dennis L. (2015-12-02T22:58:59.000). Global Physical Climatology . Els
                            :Stratosphere ,
                            :Thermosphere ,
                            :Tropopause ,
-                           :Troposphere .
+                           :Troposphere ;
+                 <http://www.w3.org/2004/02/skos/core#definition> "Earth's atmosphere is made up of the following layers, starting from the highest and descending: The Thermosphere is above the Mesopause, the Mesopause is above the Mesosphere, the Mesosphere is above the Stratopause, the Stratopause is above the Stratosphere, the Stratosphere is above the Tropopause and the Tropopose is above the Troposphere. The Tropopause, Stratopause and Mesopause each represent the boundary between various layers. E.g., the Tropopause is the boundary between the Stratosphere and Troposphere. In addition each of these boundaries marks a maximum or minimum temperature based on the various atmospheric effects on temperature. Interestingly, it is not simply a linear relation where temperature decreases as atmospheric height increases. Temperature increases as one ascends from the Tropopause to the Stratopause, decreases ascending from the Stratopaus to the Mesopaus and then increases after the Mesopause into the Thermosphere. The Tropopause and Mesopause mark the minimums where temperature decreases ascending to them and then decreases ascending past them. The Stratopause is the maximum temperature. Temperature increases ascending through the Stratosphere to the Stratopause then decreases ascending past the Stratopause into the Mesosphere. M. DeBellis 7/25/2024 Based on Hartman chapter 1.2" .
 
 
 ###  http://www.semanticweb.org/mdebe/ontologies/2024/6/climatology/FirstLawOfThermodynaims
