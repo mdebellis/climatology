@@ -401,6 +401,11 @@ Hartmann, Dennis L. (2015-12-02T22:58:59.000). Global Physical Climatology . Els
        rdfs:label "Agent" .
 
 
+###  http://www.semanticweb.org/mdebe/ontologies/2024/6/climatology/Atmosphere
+:Atmosphere rdf:type owl:Class ;
+            rdfs:subClassOf :Region .
+
+
 ###  http://www.semanticweb.org/mdebe/ontologies/2024/6/climatology/City
 :City rdf:type owl:Class ;
       rdfs:subClassOf :Region ;
@@ -613,9 +618,22 @@ Hartmann, Dennis L. (2015-12-02T22:58:59.000). Global Physical Climatology . Els
 ###  http://www.semanticweb.org/mdebe/ontologies/2024/6/climatology/Earth
 :Earth rdf:type owl:NamedIndividual ,
                 :Region ;
-       :contains :TheLandSurface ,
+       :contains :EarthAtmosphere ,
+                 :TheLandSurface ,
                  :TheWorldOcean ;
        rdfs:label "Earth" .
+
+
+###  http://www.semanticweb.org/mdebe/ontologies/2024/6/climatology/EarthAtmosphere
+:EarthAtmosphere rdf:type owl:NamedIndividual ,
+                          :Atmosphere ;
+                 :contains :Mesopause ,
+                           :Mesosphere ,
+                           :Stratopause ,
+                           :Stratosphere ,
+                           :Thermosphere ,
+                           :Tropopause ,
+                           :Troposphere .
 
 
 ###  http://www.semanticweb.org/mdebe/ontologies/2024/6/climatology/FirstLawOfThermodynaims
@@ -676,6 +694,16 @@ President Biden and Congress have taken  steps to combat the climate crisis.
 The IRA aims to reduce inflation while also addressing climate change and improving energy security.""" .
 
 
+###  http://www.semanticweb.org/mdebe/ontologies/2024/6/climatology/Mesopause
+:Mesopause rdf:type owl:NamedIndividual ,
+                    :Atmosphere .
+
+
+###  http://www.semanticweb.org/mdebe/ontologies/2024/6/climatology/Mesosphere
+:Mesosphere rdf:type owl:NamedIndividual ,
+                     :Atmosphere .
+
+
 ###  http://www.semanticweb.org/mdebe/ontologies/2024/6/climatology/Norfolk
 :Norfolk rdf:type owl:NamedIndividual ,
                   :City ;
@@ -710,6 +738,16 @@ The IRA aims to reduce inflation while also addressing climate change and improv
          rdfs:label "Seattle" .
 
 
+###  http://www.semanticweb.org/mdebe/ontologies/2024/6/climatology/Stratopause
+:Stratopause rdf:type owl:NamedIndividual ,
+                      :Atmosphere .
+
+
+###  http://www.semanticweb.org/mdebe/ontologies/2024/6/climatology/Stratosphere
+:Stratosphere rdf:type owl:NamedIndividual ,
+                       :Atmosphere .
+
+
 ###  http://www.semanticweb.org/mdebe/ontologies/2024/6/climatology/TheLandSurface
 :TheLandSurface rdf:type owl:NamedIndividual ,
                          :Region ;
@@ -726,6 +764,21 @@ Hartmann, Dennis L. (2015-12-02T22:58:59.000). Global Physical Climatology . Els
 :TheWorldOcean rdf:type owl:NamedIndividual ,
                         :Region ;
                rdfs:label "The World Ocean" .
+
+
+###  http://www.semanticweb.org/mdebe/ontologies/2024/6/climatology/Thermosphere
+:Thermosphere rdf:type owl:NamedIndividual ,
+                       :Atmosphere .
+
+
+###  http://www.semanticweb.org/mdebe/ontologies/2024/6/climatology/Tropopause
+:Tropopause rdf:type owl:NamedIndividual ,
+                     :Atmosphere .
+
+
+###  http://www.semanticweb.org/mdebe/ontologies/2024/6/climatology/Troposphere
+:Troposphere rdf:type owl:NamedIndividual ,
+                      :Atmosphere .
 
 
 ###  http://www.semanticweb.org/mdebe/ontologies/2024/6/climatology/UK
