@@ -98,6 +98,12 @@
 #    Object Properties
 #################################################################
 
+###  http://www.semanticweb.org/mdebe/ontologies/2024/6/climatology/above
+:above rdf:type owl:ObjectProperty ;
+       owl:inverseOf :below ;
+       rdf:type owl:TransitiveProperty .
+
+
 ###  http://www.semanticweb.org/mdebe/ontologies/2024/6/climatology/addressedBy
 :addressedBy rdf:type owl:ObjectProperty ;
              owl:inverseOf :addresses ;
@@ -110,6 +116,11 @@
            rdfs:range :Process ;
            rdfs:label "addresses" ;
            <http://www.w3.org/2004/02/skos/core#definition> "The problem or issue that a project addresses" .
+
+
+###  http://www.semanticweb.org/mdebe/ontologies/2024/6/climatology/below
+:below rdf:type owl:ObjectProperty ,
+                owl:TransitiveProperty .
 
 
 ###  http://www.semanticweb.org/mdebe/ontologies/2024/6/climatology/contains
@@ -236,6 +247,7 @@
                                                     owl:inverseOf <http://www.w3.org/2004/02/skos/core#topConceptOf> ;
                                                     rdfs:domain <http://www.w3.org/2004/02/skos/core#ConceptScheme> ;
                                                     rdfs:range <http://www.w3.org/2004/02/skos/core#Concept> ;
+                                                    rdfs:comment "This property is from SKOS. It may be useful in the future for modeling concepts that are difficult to define or that come from other knowledge structures such as Taxonomies that don't follow OWL semantic. M DeBellis 7/25/24" ;
                                                     rdfs:isDefinedBy <http://www.w3.org/2004/02/skos/core> ;
                                                     rdfs:label "has top concept"@en ;
                                                     <http://www.w3.org/2004/02/skos/core#definition> "Relates, by convention, a concept scheme to a concept which is topmost in the broader/narrower concept hierarchies for that scheme, providing an entry point to these hierarchies."@en .
@@ -696,12 +708,14 @@ The IRA aims to reduce inflation while also addressing climate change and improv
 
 ###  http://www.semanticweb.org/mdebe/ontologies/2024/6/climatology/Mesopause
 :Mesopause rdf:type owl:NamedIndividual ,
-                    :Atmosphere .
+                    :Atmosphere ;
+           :above :Mesosphere .
 
 
 ###  http://www.semanticweb.org/mdebe/ontologies/2024/6/climatology/Mesosphere
 :Mesosphere rdf:type owl:NamedIndividual ,
-                     :Atmosphere .
+                     :Atmosphere ;
+            :above :Stratopause .
 
 
 ###  http://www.semanticweb.org/mdebe/ontologies/2024/6/climatology/Norfolk
@@ -740,12 +754,14 @@ The IRA aims to reduce inflation while also addressing climate change and improv
 
 ###  http://www.semanticweb.org/mdebe/ontologies/2024/6/climatology/Stratopause
 :Stratopause rdf:type owl:NamedIndividual ,
-                      :Atmosphere .
+                      :Atmosphere ;
+             :above :Stratosphere .
 
 
 ###  http://www.semanticweb.org/mdebe/ontologies/2024/6/climatology/Stratosphere
 :Stratosphere rdf:type owl:NamedIndividual ,
-                       :Atmosphere .
+                       :Atmosphere ;
+              :above :Tropopause .
 
 
 ###  http://www.semanticweb.org/mdebe/ontologies/2024/6/climatology/TheLandSurface
@@ -768,12 +784,14 @@ Hartmann, Dennis L. (2015-12-02T22:58:59.000). Global Physical Climatology . Els
 
 ###  http://www.semanticweb.org/mdebe/ontologies/2024/6/climatology/Thermosphere
 :Thermosphere rdf:type owl:NamedIndividual ,
-                       :Atmosphere .
+                       :Atmosphere ;
+              :above :Mesopause .
 
 
 ###  http://www.semanticweb.org/mdebe/ontologies/2024/6/climatology/Tropopause
 :Tropopause rdf:type owl:NamedIndividual ,
-                     :Atmosphere .
+                     :Atmosphere ;
+            :above :Troposphere .
 
 
 ###  http://www.semanticweb.org/mdebe/ontologies/2024/6/climatology/Troposphere
