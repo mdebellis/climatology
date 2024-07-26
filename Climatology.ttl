@@ -14,6 +14,14 @@
 #    Annotation properties
 #################################################################
 
+###  http://purl.org/dc/terms/contributor
+<http://purl.org/dc/terms/contributor> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/created
+<http://purl.org/dc/terms/created> rdf:type owl:AnnotationProperty .
+
+
 ###  http://www.w3.org/2004/02/skos/core#altLabel
 <http://www.w3.org/2004/02/skos/core#altLabel> rdf:type owl:AnnotationProperty ;
                                                rdfs:comment "The range of skos:altLabel is the class of RDF plain literals."@en ,
@@ -153,6 +161,18 @@
        rdfs:label "funds" .
 
 
+###  http://www.semanticweb.org/mdebe/ontologies/2024/6/climatology/hasHabitat
+:hasHabitat rdf:type owl:ObjectProperty ;
+            rdfs:domain [ rdf:type owl:Class ;
+                          owl:unionOf ( :Community
+                                        :Population
+                                      )
+                        ] ;
+            rdfs:range :Habitat ;
+            <http://purl.org/dc/terms/contributor> <https://orcid.org/0000-0002-8824-9577> ;
+            <http://purl.org/dc/terms/created> "2024-07-26T17:48:58Z"^^xsd:dateTime .
+
+
 ###  http://www.semanticweb.org/mdebe/ontologies/2024/6/climatology/hasLocation
 :hasLocation rdf:type owl:ObjectProperty ;
              rdfs:range :Region ;
@@ -165,6 +185,18 @@
          rdfs:label "has Part" .
 
 
+###  http://www.semanticweb.org/mdebe/ontologies/2024/6/climatology/hasWeatherElement
+:hasWeatherElement rdf:type owl:ObjectProperty ;
+                   rdfs:domain [ rdf:type owl:Class ;
+                                 owl:unionOf ( :Climate
+                                               :Region
+                                             )
+                               ] ;
+                   rdfs:range :WeatherElement ;
+                   <http://purl.org/dc/terms/contributor> <https://orcid.org/0000-0002-8824-9577> ;
+                   <http://purl.org/dc/terms/created> "2024-07-26T17:34:48Z"^^xsd:dateTime .
+
+
 ###  http://www.semanticweb.org/mdebe/ontologies/2024/6/climatology/isContainedIn
 :isContainedIn rdf:type owl:ObjectProperty ,
                         owl:TransitiveProperty ;
@@ -174,6 +206,14 @@
 ###  http://www.semanticweb.org/mdebe/ontologies/2024/6/climatology/isPartOf
 :isPartOf rdf:type owl:ObjectProperty ;
           rdfs:label "is Part Of" .
+
+
+###  http://www.semanticweb.org/mdebe/ontologies/2024/6/climatology/receives
+:receives rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf :hasWeatherElement ;
+          rdfs:range :Precipitation ;
+          <http://purl.org/dc/terms/contributor> <https://orcid.org/0000-0002-8824-9577> ;
+          <http://purl.org/dc/terms/created> "2024-07-26T17:36:18Z"^^xsd:dateTime .
 
 
 ###  http://www.semanticweb.org/mdebe/ontologies/2024/6/climatology/sponsoredBy
@@ -399,6 +439,13 @@ Hartmann, Dennis L. (2015-12-02T22:58:59.000). Global Physical Climatology . Els
 #    Classes
 #################################################################
 
+###  http://www.semanticweb.org/mdebe/ontologies/2024/6/climatology/AbioticComponents
+:AbioticComponents rdf:type owl:Class ;
+                   rdfs:subClassOf :EcosystemComponent ;
+                   <http://purl.org/dc/terms/contributor> <https://orcid.org/0000-0002-8824-9577> ;
+                   <http://purl.org/dc/terms/created> "2024-07-26T17:42:30Z"^^xsd:dateTime .
+
+
 ###  http://www.semanticweb.org/mdebe/ontologies/2024/6/climatology/AdiabaticProcess
 :AdiabaticProcess rdf:type owl:Class ;
                   rdfs:subClassOf :Process ;
@@ -415,7 +462,30 @@ Hartmann, Dennis L. (2015-12-02T22:58:59.000). Global Physical Climatology . Els
 
 ###  http://www.semanticweb.org/mdebe/ontologies/2024/6/climatology/Atmosphere
 :Atmosphere rdf:type owl:Class ;
-            rdfs:subClassOf :Region .
+            rdfs:subClassOf :AbioticComponents ,
+                            :Region .
+
+
+###  http://www.semanticweb.org/mdebe/ontologies/2024/6/climatology/Bacteria
+:Bacteria rdf:type owl:Class ;
+          rdfs:subClassOf :BioticComponents ;
+          <http://purl.org/dc/terms/contributor> <https://orcid.org/0000-0002-8824-9577> ;
+          <http://purl.org/dc/terms/created> "2024-07-26T17:43:32Z"^^xsd:dateTime .
+
+
+###  http://www.semanticweb.org/mdebe/ontologies/2024/6/climatology/BioticComponents
+:BioticComponents rdf:type owl:Class ;
+                  rdfs:subClassOf :EcosystemComponent ;
+                  <http://purl.org/dc/terms/contributor> <https://orcid.org/0000-0002-8824-9577> ;
+                  <http://purl.org/dc/terms/created> "2024-07-26T17:39:24Z"^^xsd:dateTime .
+
+
+###  http://www.semanticweb.org/mdebe/ontologies/2024/6/climatology/Carnivores
+:Carnivores rdf:type owl:Class ;
+            rdfs:subClassOf :Consumer ;
+            <http://purl.org/dc/terms/contributor> <https://orcid.org/0000-0002-8824-9577> ;
+            <http://purl.org/dc/terms/created> "2024-07-26T17:59:03Z"^^xsd:dateTime ;
+            <http://www.w3.org/2004/02/skos/core#definition> "Animals that eat only meat" .
 
 
 ###  http://www.semanticweb.org/mdebe/ontologies/2024/6/climatology/City
@@ -456,16 +526,67 @@ Hartmann, Dennis L. (2015-12-02T22:58:59.000). Global Physical Climatology . Els
             rdfs:subClassOf :WeatherElement .
 
 
+###  http://www.semanticweb.org/mdebe/ontologies/2024/6/climatology/Community
+:Community rdf:type owl:Class ;
+           rdfs:subClassOf :BioticComponents ;
+           <http://purl.org/dc/terms/contributor> <https://orcid.org/0000-0002-8824-9577> ;
+           <http://purl.org/dc/terms/created> "2024-07-26T17:43:32Z"^^xsd:dateTime ;
+           <http://www.w3.org/2004/02/skos/core#definition> "A community is the union of all the populations of different species coexisting in the same habitat." .
+
+
+###  http://www.semanticweb.org/mdebe/ontologies/2024/6/climatology/Consumer
+:Consumer rdf:type owl:Class ;
+          rdfs:subClassOf :Niche ;
+          <http://purl.org/dc/terms/contributor> <https://orcid.org/0000-0002-8824-9577> ;
+          <http://purl.org/dc/terms/created> "2024-07-26T17:56:43Z"^^xsd:dateTime ;
+          <http://www.w3.org/2004/02/skos/core#definition> "The organisms that consume the output of the producers: herbivores (plant-eaters), carnivores (meat-eaters), and omnivores (both)." .
+
+
 ###  http://www.semanticweb.org/mdebe/ontologies/2024/6/climatology/Corporation
 :Corporation rdf:type owl:Class ;
              rdfs:subClassOf :Organization ;
              rdfs:label "Corporation" .
 
 
+###  http://www.semanticweb.org/mdebe/ontologies/2024/6/climatology/Decomposer
+:Decomposer rdf:type owl:Class ;
+            rdfs:subClassOf :Niche ;
+            <http://purl.org/dc/terms/contributor> <https://orcid.org/0000-0002-8824-9577> ;
+            <http://purl.org/dc/terms/created> "2024-07-26T17:56:43Z"^^xsd:dateTime ;
+            <http://www.w3.org/2004/02/skos/core#definition> "The fungi and bacteria that break down dead organic matter." .
+
+
 ###  http://www.semanticweb.org/mdebe/ontologies/2024/6/climatology/District
 :District rdf:type owl:Class ;
           rdfs:subClassOf :Region ;
           rdfs:label "District" .
+
+
+###  http://www.semanticweb.org/mdebe/ontologies/2024/6/climatology/Ecosystem
+:Ecosystem rdf:type owl:Class ;
+           rdfs:subClassOf :ClimateSystem ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :hasPart ;
+                             owl:someValuesFrom :EcosystemComponent
+                           ] ;
+           <http://purl.org/dc/terms/contributor> <https://orcid.org/0000-0002-8824-9577> ;
+           <http://purl.org/dc/terms/created> "2024-07-26T17:37:54Z"^^xsd:dateTime ;
+           <http://www.w3.org/2004/02/skos/core#definition> "An ecosystem is the union of the community of organisms (both plants and animals) interacting with their physical environment as well as Abiotic components such as soil and sunlight." .
+
+
+###  http://www.semanticweb.org/mdebe/ontologies/2024/6/climatology/EcosystemComponent
+:EcosystemComponent rdf:type owl:Class ;
+                    rdfs:subClassOf :ClimateSystem ;
+                    <http://purl.org/dc/terms/contributor> <https://orcid.org/0000-0002-8824-9577> ;
+                    <http://purl.org/dc/terms/created> "2024-07-26T17:39:16Z"^^xsd:dateTime .
+
+
+###  http://www.semanticweb.org/mdebe/ontologies/2024/6/climatology/FoodWeb
+:FoodWeb rdf:type owl:Class ;
+         rdfs:subClassOf :Process ;
+         <http://purl.org/dc/terms/contributor> <https://orcid.org/0000-0002-8824-9577> ;
+         <http://purl.org/dc/terms/created> "2024-07-26T18:03:05Z"^^xsd:dateTime ;
+         <http://www.w3.org/2004/02/skos/core#definition> "Interconnected relations in an ecosystem among producers, consumers, and decomposers." .
 
 
 ###  http://www.semanticweb.org/mdebe/ontologies/2024/6/climatology/Government
@@ -478,6 +599,22 @@ Hartmann, Dennis L. (2015-12-02T22:58:59.000). Global Physical Climatology . Els
 :Group rdf:type owl:Class ;
        rdfs:subClassOf :Agent ;
        rdfs:label "Group" .
+
+
+###  http://www.semanticweb.org/mdebe/ontologies/2024/6/climatology/Habitat
+:Habitat rdf:type owl:Class ;
+         rdfs:subClassOf :EcosystemComponent ,
+                         :Region ;
+         <http://purl.org/dc/terms/contributor> <https://orcid.org/0000-0002-8824-9577> ;
+         <http://purl.org/dc/terms/created> "2024-07-26T17:46:36Z"^^xsd:dateTime .
+
+
+###  http://www.semanticweb.org/mdebe/ontologies/2024/6/climatology/Herbivores
+:Herbivores rdf:type owl:Class ;
+            rdfs:subClassOf :Consumer ;
+            <http://purl.org/dc/terms/contributor> <https://orcid.org/0000-0002-8824-9577> ;
+            <http://purl.org/dc/terms/created> "2024-07-26T17:59:03Z"^^xsd:dateTime ;
+            <http://www.w3.org/2004/02/skos/core#definition> "Animals that eat only plants" .
 
 
 ###  http://www.semanticweb.org/mdebe/ontologies/2024/6/climatology/HighTideFloodingAndShorelineErosion
@@ -501,16 +638,40 @@ Hartmann, Dennis L. (2015-12-02T22:58:59.000). Global Physical Climatology . Els
         rdfs:label "Nation" .
 
 
+###  http://www.semanticweb.org/mdebe/ontologies/2024/6/climatology/Niche
+:Niche rdf:type owl:Class ;
+       rdfs:subClassOf :EcosystemComponent ;
+       <http://purl.org/dc/terms/contributor> <https://orcid.org/0000-0002-8824-9577> ;
+       <http://purl.org/dc/terms/created> "2024-07-26T17:55:08Z"^^xsd:dateTime ;
+       <http://www.w3.org/2004/02/skos/core#definition> "Each species has its unique niche—its specific job or role within the community: producers, consumers, decomposers, etc." .
+
+
 ###  http://www.semanticweb.org/mdebe/ontologies/2024/6/climatology/NonGovernmentalOrganization
 :NonGovernmentalOrganization rdf:type owl:Class ;
                              rdfs:subClassOf :Organization ;
                              rdfs:label "Non Governmental Organization" .
 
 
+###  http://www.semanticweb.org/mdebe/ontologies/2024/6/climatology/Omnivores
+:Omnivores rdf:type owl:Class ;
+           rdfs:subClassOf :Consumer ;
+           <http://purl.org/dc/terms/contributor> <https://orcid.org/0000-0002-8824-9577> ;
+           <http://purl.org/dc/terms/created> "2024-07-26T17:59:03Z"^^xsd:dateTime ;
+           <http://www.w3.org/2004/02/skos/core#definition> "Animals that eat both plants and meat" .
+
+
 ###  http://www.semanticweb.org/mdebe/ontologies/2024/6/climatology/Organization
 :Organization rdf:type owl:Class ;
               rdfs:subClassOf :Group ;
               rdfs:label "Organization" .
+
+
+###  http://www.semanticweb.org/mdebe/ontologies/2024/6/climatology/Population
+:Population rdf:type owl:Class ;
+            rdfs:subClassOf :BioticComponents ;
+            <http://purl.org/dc/terms/contributor> <https://orcid.org/0000-0002-8824-9577> ;
+            <http://purl.org/dc/terms/created> "2024-07-26T17:46:20Z"^^xsd:dateTime ;
+            <http://www.w3.org/2004/02/skos/core#definition> "A population consists of all the individuals of the same species living in a particular area." .
 
 
 ###  http://www.semanticweb.org/mdebe/ontologies/2024/6/climatology/Precipitation
@@ -535,6 +696,14 @@ Hartmann, Dennis L. (2015-12-02T22:58:59.000). Global Physical Climatology . Els
                                   rdfs:label "Process Influenced By Climate Change" .
 
 
+###  http://www.semanticweb.org/mdebe/ontologies/2024/6/climatology/Producer
+:Producer rdf:type owl:Class ;
+          rdfs:subClassOf :Niche ;
+          <http://purl.org/dc/terms/contributor> <https://orcid.org/0000-0002-8824-9577> ;
+          <http://purl.org/dc/terms/created> "2024-07-26T17:56:43Z"^^xsd:dateTime ;
+          <http://www.w3.org/2004/02/skos/core#definition> "The green plants that capture sunlight and create food through photosynthesis." .
+
+
 ###  http://www.semanticweb.org/mdebe/ontologies/2024/6/climatology/Project
 :Project rdf:type owl:Class ;
          rdfs:subClassOf :Process ;
@@ -554,10 +723,24 @@ Hartmann, Dennis L. (2015-12-02T22:58:59.000). Global Physical Climatology . Els
         <http://www.w3.org/2004/02/skos/core#definition> "Climate is the synthesis of the weather in a particular region. It can be defined quantitatively by using the expected values of the meteorological elements at a location during a certain month or season." .
 
 
+###  http://www.semanticweb.org/mdebe/ontologies/2024/6/climatology/Soil
+:Soil rdf:type owl:Class ;
+      rdfs:subClassOf :AbioticComponents ;
+      <http://purl.org/dc/terms/contributor> <https://orcid.org/0000-0002-8824-9577> ;
+      <http://purl.org/dc/terms/created> "2024-07-26T17:44:51Z"^^xsd:dateTime .
+
+
 ###  http://www.semanticweb.org/mdebe/ontologies/2024/6/climatology/State
 :State rdf:type owl:Class ;
        rdfs:subClassOf :Region ;
        rdfs:label "State" .
+
+
+###  http://www.semanticweb.org/mdebe/ontologies/2024/6/climatology/Sunlight
+:Sunlight rdf:type owl:Class ;
+          rdfs:subClassOf :AbioticComponents ;
+          <http://purl.org/dc/terms/contributor> <https://orcid.org/0000-0002-8824-9577> ;
+          <http://purl.org/dc/terms/created> "2024-07-26T17:44:51Z"^^xsd:dateTime .
 
 
 ###  http://www.semanticweb.org/mdebe/ontologies/2024/6/climatology/Temperature
@@ -566,10 +749,31 @@ Hartmann, Dennis L. (2015-12-02T22:58:59.000). Global Physical Climatology . Els
              rdfs:label "Temperature" .
 
 
+###  http://www.semanticweb.org/mdebe/ontologies/2024/6/climatology/Vegetation
+:Vegetation rdf:type owl:Class ;
+            rdfs:subClassOf :BioticComponents ;
+            <http://purl.org/dc/terms/contributor> <https://orcid.org/0000-0002-8824-9577> ;
+            <http://purl.org/dc/terms/created> "2024-07-26T17:43:32Z"^^xsd:dateTime .
+
+
 ###  http://www.semanticweb.org/mdebe/ontologies/2024/6/climatology/Village
 :Village rdf:type owl:Class ;
          rdfs:subClassOf :Region ;
          rdfs:label "Village" .
+
+
+###  http://www.semanticweb.org/mdebe/ontologies/2024/6/climatology/Viruses
+:Viruses rdf:type owl:Class ;
+         rdfs:subClassOf :BioticComponents ;
+         <http://purl.org/dc/terms/contributor> <https://orcid.org/0000-0002-8824-9577> ;
+         <http://purl.org/dc/terms/created> "2024-07-26T17:43:32Z"^^xsd:dateTime .
+
+
+###  http://www.semanticweb.org/mdebe/ontologies/2024/6/climatology/Water
+:Water rdf:type owl:Class ;
+       rdfs:subClassOf :AbioticComponents ;
+       <http://purl.org/dc/terms/contributor> <https://orcid.org/0000-0002-8824-9577> ;
+       <http://purl.org/dc/terms/created> "2024-07-26T17:44:51Z"^^xsd:dateTime .
 
 
 ###  http://www.semanticweb.org/mdebe/ontologies/2024/6/climatology/WeatherElement
@@ -646,7 +850,7 @@ Hartmann, Dennis L. (2015-12-02T22:58:59.000). Global Physical Climatology . Els
 :Earth rdf:type owl:NamedIndividual ,
                 :Region ;
        :contains :EarthAtmosphere ,
-                 :TheLandSurface ,
+                 :TheSurfaceOfTheEarth ,
                  :TheWorldOcean ;
        rdfs:label "Earth" .
 
@@ -780,14 +984,14 @@ The IRA aims to reduce inflation while also addressing climate change and improv
               :above :Tropopause .
 
 
-###  http://www.semanticweb.org/mdebe/ontologies/2024/6/climatology/TheLandSurface
-:TheLandSurface rdf:type owl:NamedIndividual ,
-                         :Region ;
-                :contains :India ,
-                          :UK ,
-                          :USA ;
-                rdfs:label "The Land Surface" ;
-                <http://www.w3.org/2004/02/skos/core#definition> """Although the land surface covers only 29% of Earth, the climate over the land surface is extremely important to us because humans are land-dwelling creatures. Cereal grains are the world’s most important food source, and supply about half of the world’s calories and muchof the protein. About 80% of the animal protein consumed by humans comes from meat, eggs, and dairy products, and only 20% from seafood. Over the land surface, temperature and soil moisture are key determinants of natural vegetation and the agricultural potential of a given area. Vegetation, snow cover, and soil conditions also affect the local and global climate, so that local climate and land surface conditions participate in a two-way relationship. Land topography plays an important role in modifying regional climates, and weathering of rocks on land is a key component of the carbon cycle that controls the carbon dioxide content of the atmosphere on millennial time scales. The arrangement of land and ocean areas on Earth plays a role in determining global climate. The arrangement of land and ocean varies on time scales of millions of years as the continents drift about. At the present time, about 68% of Earth’s land area is in the Northern Hemisphere (Fig. 1.13). The fact that the Northern Hemisphere has most of the land area causes significant differences in the climates of the Northern and Southern Hemispheres, and plays an important role in climate change. The Northern Hemisphere has much more dramatic east–west variations in continental elevation, especially in middle latitudes where the Himalaya and Rocky Mountains are prominent features (Fig. 1.14). The topography of the land surface and the arrangement and orientation of mountain ranges are key determinants of climate.
+###  http://www.semanticweb.org/mdebe/ontologies/2024/6/climatology/TheSurfaceOfTheEarth
+:TheSurfaceOfTheEarth rdf:type owl:NamedIndividual ,
+                               :Region ;
+                      :contains :India ,
+                                :UK ,
+                                :USA ;
+                      rdfs:label "The Surface Of The Earth" ;
+                      <http://www.w3.org/2004/02/skos/core#definition> """Although the land surface covers only 29% of Earth, the climate over the land surface is extremely important to us because humans are land-dwelling creatures. Cereal grains are the world’s most important food source, and supply about half of the world’s calories and muchof the protein. About 80% of the animal protein consumed by humans comes from meat, eggs, and dairy products, and only 20% from seafood. Over the land surface, temperature and soil moisture are key determinants of natural vegetation and the agricultural potential of a given area. Vegetation, snow cover, and soil conditions also affect the local and global climate, so that local climate and land surface conditions participate in a two-way relationship. Land topography plays an important role in modifying regional climates, and weathering of rocks on land is a key component of the carbon cycle that controls the carbon dioxide content of the atmosphere on millennial time scales. The arrangement of land and ocean areas on Earth plays a role in determining global climate. The arrangement of land and ocean varies on time scales of millions of years as the continents drift about. At the present time, about 68% of Earth’s land area is in the Northern Hemisphere (Fig. 1.13). The fact that the Northern Hemisphere has most of the land area causes significant differences in the climates of the Northern and Southern Hemispheres, and plays an important role in climate change. The Northern Hemisphere has much more dramatic east–west variations in continental elevation, especially in middle latitudes where the Himalaya and Rocky Mountains are prominent features (Fig. 1.14). The topography of the land surface and the arrangement and orientation of mountain ranges are key determinants of climate.
 
 Hartmann, Dennis L. (2015-12-02T22:58:59.000). Global Physical Climatology . Elsevier Science. Kindle Edition.""" .
 
@@ -818,7 +1022,7 @@ Hartmann, Dennis L. (2015-12-02T22:58:59.000). Global Physical Climatology . Els
 ###  http://www.semanticweb.org/mdebe/ontologies/2024/6/climatology/UK
 :UK rdf:type owl:NamedIndividual ,
              :Nation ;
-    rdfs:label "U K" .
+    rdfs:label "UK" .
 
 
 ###  http://www.semanticweb.org/mdebe/ontologies/2024/6/climatology/USA
@@ -826,8 +1030,9 @@ Hartmann, Dennis L. (2015-12-02T22:58:59.000). Global Physical Climatology . Els
               :Nation ;
      :contains :Alabama ,
                :California ,
+               :Virginia ,
                :Washington ;
-     rdfs:label "U S A" .
+     rdfs:label "USA" .
 
 
 ###  http://www.semanticweb.org/mdebe/ontologies/2024/6/climatology/USFederalGovernment
